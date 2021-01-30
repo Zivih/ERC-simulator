@@ -1,11 +1,4 @@
-#include <iostream>
-#include <unistd.h>
-#include <sys/socket.h>
-#include <arpa/inet.h>
-#include <netdb.h>
-#include <string>
-#include "thread.hpp"
-#include "json.hpp"
+#include "lib\libstd.hpp"
 
 #define BUFSIZE 102400 //max uint32_t
 
