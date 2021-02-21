@@ -1,0 +1,34 @@
+# Blender MTL File: 'None'
+# Material Count: 3
+
+newmtl aluminum
+Ns 470.101274
+Ka 1.000000 1.000000 1.000000
+Kd 0.964686 0.964686 0.964686
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl aluminum_black
+Ns 440.999985
+Ka 1.000000 1.000000 1.000000
+Kd 0.077739 0.073838 0.073838
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl hub
+Ns 323.999994
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump -bm 0.600000 C:\\Users\\ALESSA~1\\AppData\\Local\\Temp\\gltfimg-vua37v1d\\mars_2020_hub_n.jpg
+map_Kd C:\\Users\\ALESSA~1\\AppData\\Local\\Temp\\gltfimg-3l9c2tuv\\mars_2020_hub.jpg

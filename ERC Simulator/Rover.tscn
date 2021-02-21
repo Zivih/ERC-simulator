@@ -1,0 +1,205 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Rover.gd" type="Script" id=1]
+[ext_resource path="res://Camera.gd" type="Script" id=2]
+[ext_resource path="res://Assets/wheel.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://Assets/rovernowheels.obj" type="ArrayMesh" id=4]
+
+[sub_resource type="PhysicsMaterial" id=1]
+friction = 0.5
+
+[sub_resource type="BoxShape" id=2]
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 0.477039, 0.5, 1.16331 )
+
+[node name="CarBase" type="Spatial"]
+_import_path = NodePath(".")
+__meta__ = {
+"__editor_plugin_screen__": "3D"
+}
+
+[node name="Body" type="VehicleBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00169557, 0.222867, -0.0955184 )
+physics_material_override = SubResource( 1 )
+engine_force = 40.0
+script = ExtResource( 1 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Body"]
+transform = Transform( 0.215, 0, 0, 0, 0.704, 0, 0, 0, 0.662, 0.361768, 1.42617, 1.58621 )
+shape = SubResource( 2 )
+
+[node name="Wheel1" type="VehicleWheel" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03186, 0.263014, 1.10416 )
+engine_force = 40.0
+wheel_roll_influence = 1.0
+wheel_radius = 0.3
+wheel_friction_slip = 1.0
+suspension_travel = 2.0
+suspension_stiffness = 40.0
+damping_compression = 0.88
+
+[node name="Wheel1" type="MeshInstance" parent="Body/Wheel1"]
+_import_path = NodePath("BODY-vehicle/wheel1-wheel")
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00341821, -0.00271431, -0.00688267 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="Wheel2" type="VehicleWheel" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0812, 0.257148, -1.17107 )
+engine_force = 40.0
+use_as_traction = true
+wheel_roll_influence = 1.0
+wheel_radius = 0.3
+wheel_friction_slip = 1.0
+suspension_travel = 2.0
+suspension_stiffness = 40.0
+damping_compression = 0.88
+
+[node name="Wheel2" type="MeshInstance" parent="Body/Wheel2"]
+_import_path = NodePath("BODY-vehicle/wheel2-wheel")
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00619459, 0, 0 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="Wheel3" type="VehicleWheel" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.057, 0.264559, 1.104 )
+engine_force = 40.0
+wheel_roll_influence = 1.0
+wheel_radius = 0.3
+wheel_friction_slip = 1.0
+suspension_travel = 2.0
+suspension_stiffness = 40.0
+damping_compression = 0.88
+
+[node name="Wheel3" type="MeshInstance" parent="Body/Wheel3"]
+_import_path = NodePath("BODY-vehicle/wheel3-wheel")
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, -0.0106463, -0.00330353, -0.00518548 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="Wheel4" type="VehicleWheel" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0702, 0.263969, -1.16214 )
+engine_force = 40.0
+use_as_traction = true
+wheel_roll_influence = 1.0
+wheel_radius = 0.3
+wheel_friction_slip = 1.0
+suspension_travel = 2.0
+suspension_stiffness = 40.0
+damping_compression = 0.88
+
+[node name="Wheel4" type="MeshInstance" parent="Body/Wheel4"]
+_import_path = NodePath("BODY-vehicle/wheel4-wheel")
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="Body" type="MeshInstance" parent="Body"]
+_import_path = NodePath("BODY-vehicle")
+mesh = ExtResource( 4 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
+material/13 = null
+material/14 = null
+material/15 = null
+material/16 = null
+material/17 = null
+material/18 = null
+material/19 = null
+material/20 = null
+material/21 = null
+material/22 = null
+material/23 = null
+material/24 = null
+material/25 = null
+material/26 = null
+material/27 = null
+material/28 = null
+material/29 = null
+material/30 = null
+material/31 = null
+material/32 = null
+material/33 = null
+material/34 = null
+material/35 = null
+material/36 = null
+material/37 = null
+material/38 = null
+material/39 = null
+material/40 = null
+material/41 = null
+material/42 = null
+material/43 = null
+material/44 = null
+material/45 = null
+material/46 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Body"]
+transform = Transform( 1.814, 0, 0, 0, 0.775, 0, 0, 0, 1.117, 0, 1.02671, -0.189203 )
+shape = SubResource( 3 )
+
+[node name="CameraBase" type="Spatial" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.97449, 0 )
+
+[node name="Camera" type="Camera" parent="Body/CameraBase"]
+transform = Transform( -0.709652, -0.170177, 0.683691, -2.11161e-08, 0.970391, 0.241539, -0.704552, 0.171409, -0.68864, 3.44908, 2.03236, -4.39379 )
+current = true
+fov = 74.0
+near = 0.1
+script = ExtResource( 2 )
+
+[node name="MidWheelL" type="VehicleWheel" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18863, 0.269787, -0.0967025 )
+engine_force = 40.0
+use_as_traction = true
+wheel_roll_influence = 1.0
+wheel_radius = 0.3
+wheel_friction_slip = 1.0
+suspension_travel = 2.0
+suspension_stiffness = 40.0
+
+[node name="MeshInstance" type="MeshInstance" parent="Body/MidWheelL"]
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="MidWheelR" type="VehicleWheel" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.20002, 0.264661, -0.0924428 )
+engine_force = 40.0
+use_as_traction = true
+wheel_roll_influence = 1.0
+wheel_radius = 0.3
+wheel_friction_slip = 1.0
+suspension_travel = 2.0
+suspension_stiffness = 40.0
+
+[node name="MeshInstance" type="MeshInstance" parent="Body/MidWheelR"]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+_import_path = NodePath("AnimationPlayer")

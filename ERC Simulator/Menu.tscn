@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://images/collectiontask.png" type="Texture" id=1]
+[ext_resource path="res://images/862-512.webp" type="Texture" id=2]
+[ext_resource path="res://Menu.gd" type="Script" id=3]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/909385-200.png-b12066ff521d58ef7f5eb61d0221c6c1.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 4
+load_path = "res://.import/panel_control_system_industrial_factory_switch_button-512.webp-027803426413567d174ce50581920ade.stex"
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -2.0
+margin_right = 3.0
+margin_bottom = -1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScienceTaskButton" type="Button" parent="."]
+margin_left = 252.982
+margin_top = 240.0
+margin_right = 452.982
+margin_bottom = 440.0
+icon = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TraverseTaskButton" type="Button" parent="."]
+margin_left = 503.0
+margin_top = 240.0
+margin_right = 703.0
+margin_bottom = 440.0
+icon = ExtResource( 2 )
+expand_icon = true
+
+[node name="MaintenanceTaskButton" type="Button" parent="."]
+margin_left = 748.643
+margin_top = 240.0
+margin_right = 948.643
+margin_bottom = 440.0
+icon = SubResource( 2 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollectionTaskButton" type="Button" parent="."]
+margin_left = 1003.0
+margin_top = 239.0
+margin_right = 1191.0
+margin_bottom = 440.0
+icon = ExtResource( 1 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="ScienceTaskButton" to="." method="_on_ScienceTaskButton_pressed"]
+[connection signal="pressed" from="TraverseTaskButton" to="." method="_on_TraverseTaskButton_pressed"]
+[connection signal="pressed" from="MaintenanceTaskButton" to="." method="_on_MaintenanceTaskButton_pressed"]
+[connection signal="pressed" from="CollectionTaskButton" to="." method="_on_CollectionTaskButton_pressed"]
