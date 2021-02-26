@@ -1,16 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://images/collectiontask.png" type="Texture" id=1]
 [ext_resource path="res://images/862-512.webp" type="Texture" id=2]
 [ext_resource path="res://Menu.gd" type="Script" id=3]
+[ext_resource path="res://images/perseverance-landed.jpg" type="Texture" id=4]
+[ext_resource path="res://images/panel_control_system_industrial_factory_switch_button-512.webp" type="Texture" id=5]
+[ext_resource path="res://images/909385-200.png" type="Texture" id=6]
+[ext_resource path="res://images/loading.png" type="Texture" id=7]
+[ext_resource path="res://images/Loading.anim" type="Animation" id=8]
 
-[sub_resource type="StreamTexture" id=1]
-flags = 4
-load_path = "res://.import/909385-200.png-b12066ff521d58ef7f5eb61d0221c6c1.stex"
-
-[sub_resource type="StreamTexture" id=2]
-flags = 4
-load_path = "res://.import/panel_control_system_industrial_factory_switch_button-512.webp-027803426413567d174ce50581920ade.stex"
+[sub_resource type="Theme" id=1]
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -23,46 +22,77 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScienceTaskButton" type="Button" parent="."]
-margin_left = 252.982
-margin_top = 240.0
-margin_right = 452.982
-margin_bottom = 440.0
-icon = SubResource( 1 )
+[node name="ColorRect" type="TextureRect" parent="."]
+margin_top = -4.0
+margin_right = 1443.0
+margin_bottom = 901.0
+texture = ExtResource( 4 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TraverseTaskButton" type="Button" parent="."]
-margin_left = 503.0
-margin_top = 240.0
-margin_right = 703.0
-margin_bottom = 440.0
-icon = ExtResource( 2 )
-expand_icon = true
+[node name="MaintenanceTaskButton" type="TextureButton" parent="ColorRect"]
+margin_left = 784.0
+margin_top = 65.0
+margin_right = 994.0
+margin_bottom = 252.0
+texture_normal = ExtResource( 5 )
+expand = true
 
-[node name="MaintenanceTaskButton" type="Button" parent="."]
-margin_left = 748.643
-margin_top = 240.0
-margin_right = 948.643
-margin_bottom = 440.0
-icon = SubResource( 2 )
-expand_icon = true
+[node name="ScienceTaskButton" type="TextureButton" parent="ColorRect"]
+margin_left = 215.198
+margin_top = 245.719
+margin_right = 427.198
+margin_bottom = 451.719
+theme = SubResource( 1 )
+texture_normal = ExtResource( 6 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CollectionTaskButton" type="Button" parent="."]
-margin_left = 1003.0
-margin_top = 239.0
-margin_right = 1191.0
-margin_bottom = 440.0
-icon = ExtResource( 1 )
-expand_icon = true
+[node name="TraverseTaskButton" type="TextureButton" parent="ColorRect"]
+margin_left = 448.265
+margin_top = 56.0754
+margin_right = 648.265
+margin_bottom = 256.075
+texture_normal = ExtResource( 2 )
+expand = true
+
+[node name="CollectionTaskButton" type="TextureButton" parent="ColorRect"]
+margin_left = 1020.31
+margin_top = 255.314
+margin_right = 1208.31
+margin_bottom = 456.314
+texture_normal = ExtResource( 1 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="ScienceTaskButton" to="." method="_on_ScienceTaskButton_pressed"]
-[connection signal="pressed" from="TraverseTaskButton" to="." method="_on_TraverseTaskButton_pressed"]
-[connection signal="pressed" from="MaintenanceTaskButton" to="." method="_on_MaintenanceTaskButton_pressed"]
-[connection signal="pressed" from="CollectionTaskButton" to="." method="_on_CollectionTaskButton_pressed"]
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect"]
+visible = false
+anchor_left = 0.389
+anchor_top = 0.298
+anchor_right = 0.479
+anchor_bottom = 0.479
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/CenterContainer"]
+autoplay = "Loading"
+anims/Loading = ExtResource( 8 )
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/CenterContainer"]
+margin_right = 351.0
+margin_bottom = 348.0
+rect_pivot_offset = Vector2( 172, 179 )
+texture = ExtResource( 7 )
+[connection signal="pressed" from="ColorRect/MaintenanceTaskButton" to="." method="_on_MaintenanceTaskButton_pressed"]
+[connection signal="pressed" from="ColorRect/ScienceTaskButton" to="." method="_on_ScienceTaskButton_pressed"]
+[connection signal="pressed" from="ColorRect/TraverseTaskButton" to="." method="_on_TraverseTaskButton_pressed"]
+[connection signal="pressed" from="ColorRect/CollectionTaskButton" to="." method="_on_CollectionTaskButton_pressed"]

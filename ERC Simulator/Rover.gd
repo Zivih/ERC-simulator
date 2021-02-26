@@ -10,10 +10,11 @@ var backleftwheel = null
 var frontrightwheel = null
 var midrightwheel = null
 var backrightwheel = null
-
+var wheels = []
 #forse conviene usare un parametro globale del rover per la roll influence
 #così specifichiamo la rotazione sui vari terreni evitando lo scivolamento
-export var engine_force_value = 40
+export var engine_force_value_max = 150
+var engine_force_value = engine_force_value_max
 func _ready():
 	frontleftwheel = $Wheel1
 	midleftwheel = $MidWheelL
@@ -21,13 +22,19 @@ func _ready():
 	frontrightwheel = $Wheel3
 	midrightwheel = $MidWheelR
 	backrightwheel = $Wheel4
-	
+	wheels = [frontleftwheel, midleftwheel, backleftwheel, frontrightwheel, midrightwheel, backrightwheel]
 func _physics_process(delta):
+	if linear_velocity.length() != 0:
+		engine_force_value = engine_force_value_max/(linear_velocity.length() + abs(angular_velocity.length()))
+	else:
+		engine_force_value = engine_force_value_max
 	var fwd_mps = transform.basis.xform_inv(linear_velocity).x
 
 	#steer_target = Input.get_action_strength("turn_left") - Input.get_action_strength("turn_right")
 	#steer_target *= STEER_LIMIT
 	if Input.is_action_pressed("turn_right"):
+		for i in wheels:
+			i.wheel_roll_influence = 1
 		frontleftwheel.engine_force = engine_force_value
 		midleftwheel.engine_force = engine_force_value
 		backleftwheel.engine_force = engine_force_value
@@ -36,6 +43,8 @@ func _physics_process(delta):
 		backrightwheel.engine_force = -engine_force_value
 		
 	elif Input.is_action_pressed("turn_left"):
+		for i in wheels:
+			i.wheel_roll_influence = 1
 		frontleftwheel.engine_force = -engine_force_value
 		midleftwheel.engine_force = -engine_force_value
 		backleftwheel.engine_force = -engine_force_value
@@ -44,6 +53,8 @@ func _physics_process(delta):
 		backrightwheel.engine_force = engine_force_value
 		
 	elif Input.is_action_pressed("accelerate"):
+		for i in wheels:
+			i.wheel_roll_influence = 0
 		frontleftwheel.engine_force = engine_force_value
 		midleftwheel.engine_force = engine_force_value
 		backleftwheel.engine_force = engine_force_value
@@ -53,20 +64,15 @@ func _physics_process(delta):
 		#engine_force = 0
 
 	elif Input.is_action_pressed("reverse"):
-		if (fwd_mps >= -1):
-			frontleftwheel.engine_force = -engine_force_value
-			midleftwheel.engine_force = -engine_force_value
-			backleftwheel.engine_force = -engine_force_value
-			frontrightwheel.engine_force = -engine_force_value
-			midrightwheel.engine_force = -engine_force_value
-			backrightwheel.engine_force = -engine_force_value
-		else:
-			frontleftwheel.brake = 1
-			midleftwheel.brake = 1
-			backleftwheel.brake = 1
-			frontrightwheel.brake = 1
-			midrightwheel.brake = 1
-			backrightwheel.brake = 1
+		for i in wheels:
+			i.wheel_roll_influence = 0
+		frontleftwheel.engine_force = -engine_force_value
+		midleftwheel.engine_force = -engine_force_value
+		backleftwheel.engine_force = -engine_force_value
+		frontrightwheel.engine_force = -engine_force_value
+		midrightwheel.engine_force = -engine_force_value
+		backrightwheel.engine_force = -engine_force_value
+		
 	else:
 		frontleftwheel.engine_force = 0
 		midleftwheel.engine_force = 0
